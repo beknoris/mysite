@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="form-row" sec:authorize="hasAuthority('ADMIN')">
+    <form class="needs-validation" novalidate action="#" th:action="@{/addjob}" th:object="${job}" method="post">
+        <label for="full_name">Жұмыстың аты</label>
+        <input type="text" id="full_name" th:field="*{description}" class="form-control" required/>
+        <div class="invalid-feedback">Атын енгізіңіз</div>
+
+        <label for="league">Компания</label>
+        <input type="text" id="league" th:field="*{company}" class="form-control" required/>
+        <div class="invalid-feedback">Компания</div>
+        <br/>
+        <button type="submit" class="btn btn-outline-success">Қосу</button>
+    </form>
+</div>
+</body>
+</html>
